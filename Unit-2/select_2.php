@@ -18,8 +18,27 @@ $result = mysqli_query($conn, $sql);
 // Process the result set
 if (mysqli_num_rows($result) > 0) {
   // Output data of each row
+?>
+<html>
+<body>
+
+<table border=2>
+<tr>
+<th>Userid</th>
+<th>Username</th>
+<th>lastname</th>
+</tr>
+<tr>
+<?php
   while($row = mysqli_fetch_assoc($result)) {
-    echo "id: " . $row["id"]. " - Name: " . $row["firstname"]. " " . $row["lastname"]. "<br>";
+
+?>
+		<td><?php echo $row["id"] ?></td>
+		<td><?php echo $row["firstname"] ?></td>
+		<td><?php echo $row["lastname"] ?></td>
+		</tr>
+<?php
+
   }
 } else {
   echo "0 results";
@@ -27,3 +46,5 @@ if (mysqli_num_rows($result) > 0) {
 
 mysqli_close($conn);
 ?>
+</table>
+</html>
